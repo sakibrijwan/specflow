@@ -15,21 +15,42 @@ namespace facebookStatusUpdate
         static IWebDriver  driver = new ChromeDriver();
 
         LoginPage login = new LoginPage(driver);
-        [Given(@"I have entered username")]
-        public void GivenIHaveEnteredUsername()
+
+        [Given(@"Hit the URL")]
+        public void GivenHitTheURL()
+        {
+            driver.Url = "http://www.facebook.com";
+        }
+
+
+        [Given(@"I have entered userame (.*)")]
+        public void GivenIHaveEnteredUserame(string u0)
         {
             
-            driver.Url="http://www.facebook.com";
-            
-            login.InputUserName();
+            login.InputUserName(u0);
         }
-        
-        [Given(@"I have entered password")]
-        public void GivenIHaveEnteredPassword()
+
+        [Given(@"I have entered password (.*)")]
+        public void GivenIHaveEnteredPassword(string p0)
         {
-           login.InputPassword();
+            login.InputPassword(p0);
         }
-        
+
+
+        //[Given(@"I have entered userame '(.*)'")]
+        //public void GivenIHaveEntered(string u0)
+        //{
+        //    driver.Url = "http://www.facebook.com";
+
+        //    login.InputUserName(u0);
+        //}
+
+        //[Given(@"I have entered password '(.*)'")]
+        //public void GivenIHaveEnteredPassword(string p0)
+        //{
+        //    login.InputPassword(p0);
+        //}
+     
         [When(@"I press Login button")]
         public void WhenIPressLoginButton()
         {

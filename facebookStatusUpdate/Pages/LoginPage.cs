@@ -38,14 +38,14 @@ namespace facebookStatusUpdate.Pages
         public IWebElement BirthdayBox { get; set; }
         
 
-        public void InputUserName()
+        public void InputUserName(string u0)
         {
-            Email.SendKeys("testnilavo1@gmail.com");
+            Email.SendKeys(u0);
         }
 
-        public void InputPassword()
+        public void InputPassword(string p0)
         {
-            Password.SendKeys("Nilavo2006");
+            Password.SendKeys(p0);
         }
 
         public void ClickSignInButton()

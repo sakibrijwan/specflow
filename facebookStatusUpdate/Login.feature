@@ -5,8 +5,7 @@
 
 @mytag
 Scenario Outline: Login to get home page
-	Given Hit the URL
-	And I have entered userame <username>
+	Given I have entered userame <username>
 	And I have entered password <password>
 	When I press Login button
 	Then the home page appears

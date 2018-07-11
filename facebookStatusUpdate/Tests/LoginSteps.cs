@@ -1,9 +1,6 @@
-﻿using System;
-using System.Security.Cryptography.X509Certificates;
-using facebookStatusUpdate.Pages;
+﻿using facebookStatusUpdate.Pages;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
 using TechTalk.SpecFlow;
 
 namespace facebookStatusUpdate
@@ -15,12 +12,18 @@ namespace facebookStatusUpdate
         static IWebDriver  driver = new ChromeDriver();
 
         LoginPage login = new LoginPage(driver);
+        HomePage homePage=new HomePage(driver);
 
-        [Given(@"Hit the URL")]
-        public void GivenHitTheURL()
+        [BeforeTestRun]
+        static void GivenHitTheURL()
         {
             driver.Url = "http://www.facebook.com";
         }
+        //[Given(@"Hit the URL")]
+        //public void GivenHitTheURL()
+        //{
+        //    driver.Url = "http://www.facebook.com";
+        //}
 
 
         [Given(@"I have entered userame (.*)")]
@@ -59,6 +62,12 @@ namespace facebookStatusUpdate
         
         [Then(@"the home page appears")]
         public void ThenTheHomePageAppears()
+        {
+           homePage.ClickStories();
+        }
+
+        [AfterTestRun]
+        public static void driverQuite()
         {
             driver.Quit();
         }
